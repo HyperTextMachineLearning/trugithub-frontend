@@ -1,10 +1,17 @@
 <div class="container d-flex align-items-center justify-content-center" style="height: 600px;">
     <div class="row">
-            <form action="">
+        <!-- action="/profile" -->
+            <!-- <form #username="ngForm" (ngSubmit)="submit($event, username)"> -->
+            <form (submit)="submit(username)">
                 <div class="form col d-flex flex-column justify-content-center">
                     <h1 class="text-center pb-2 mb-2">Fetch GitHub repositories using username!</h1>
                     <!-- <label for="username" class="form-label">Username</label> -->
-                    <input type="text" focus class="form-control form-control-lg" id="username" placeholder="johnpapa">      
+                    <div class="input-group mb-3">
+                        <input type="text" #username required maxlength="39" class="form-control form-control-lg" name="username" placeholder="johnpapa" aria-label="Recipient's username" aria-describedby="button-addon2" ngModel>
+                        <button class="btn btn-outline-dark" type="submit" id="button-addon2">Go</button>
+                    </div>                      
+                    <ng-container *ngIf="failsBasicValidn">Oops no user with username exists :(</ng-container>    
+                    <!-- <input type="text" #username required maxlength="39" class="form-control form-control-lg" name="username" placeholder="johnpapa" ngModel>  -->
                 </div>
             </form>
     </div>

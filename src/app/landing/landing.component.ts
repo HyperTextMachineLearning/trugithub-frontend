@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FetchReposService } from '../services/fetch-repos.service';
 
 @Component({
@@ -7,22 +8,24 @@ import { FetchReposService } from '../services/fetch-repos.service';
 	styleUrls: ['./landing.component.css']
 })
 export class LandingComponent {
-	constructor(private repoService: FetchReposService){};
+	constructor(private repoService: FetchReposService, private router: Router){};
 	failsBasicValidn: boolean = false;
 	username: string = '';
 	validnregex = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
 	// submit (event: any, form: NgForm) {
 	submit (usernameField: HTMLInputElement) {
 
-		this.username = usernameField.value;
+		// this.username = usernameField.value;
 
-		if(this.validnregex.test(this.username)){
-			this.repoService.getUsername(this.username);
-			this.failsBasicValidn = false;
-		}
-		else{
-			usernameField.value = '';
-			this.failsBasicValidn = true;
-		}
+		// if(this.validnregex.test(this.username)){
+		// 	this.repoService.getUsername(this.username);
+		// 	this.failsBasicValidn = false;
+		// }
+		// else{
+		// 	usernameField.value = '';
+		// 	this.failsBasicValidn = true;
+		// }
+
+		this.router.navigate(['/profile'])
  	}
 }

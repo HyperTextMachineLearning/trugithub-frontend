@@ -1,4 +1,5 @@
-<div class="container">
+<!-- Old: -->
+<!-- <div class="container">
     <div class="row p-4 mt-2 mb-1 d-flex justify-content-center">
         <div class="col-3 d-flex justify-content-center">
             <img src="" width="150px" height="150px" class="border" alt="">
@@ -11,12 +12,53 @@
         </div>
     </div>
     <a href="#" target="_blank">John's Github Profile</a>
+</div> -->
+
+<!-- Profile Card -->
+<div class="container p-2 mt-2 border border-success rounded">
+    <!-- Profile Section -->
+    <div class="row pb-3">
+        <div class="col-md-3 d-flex flex-column align-items-center pt-md-2 mt-md-2">
+            <img src="" width="150px" height="150px" class="border rounded-circle" alt="">
+        </div>
+        <div class="col-md-5 d-flex flex-column align-items-center d-md-block pt-2 mt-2 ">
+            <h2><strong>John Doe</strong></h2>
+            <p><i>Bio Goes Here</i></p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg> Location</p>
+            <a href="#" class="" target="_blank">Twitter</a><br>
+            <a href="#" class="mt-2" target="_blank">John's Github Profile</a>
+        </div>
+    </div>
 </div>
-<div class="container d-flex justify-content-center">
-    <div class="row w-100 d-flex flex-wrap justify-content-start">
+
+<!-- Search Another user -->
+<div class="container d-flex align-items-center justify-content-center mt-3">
+    <!-- action="/profile" -->
+        <!-- <form #username="ngForm" (ngSubmit)="submit($event, username)"> -->
+        <div class="row w-100">
+            <div class="col-md col-lg"></div>
+            <!-- <form (submit)="submit(username)" class="col col-lg-9 col-md-10"> -->
+            <form class="col col-lg-9 col-md-10">
+                <div class="form d-flex flex-column justify-content-center">
+                    <div class="input-group mb-1">
+                        <input type="text" required maxlength="39" class="form-control form-control-lg" name="username" placeholder="Search another user" aria-label="Recipient's username" aria-describedby="button-addon2" ngModel>
+                        <button class="btn btn-outline-dark" type="submit" id="button-addon2">Go</button>
+                    </div>                      
+                    <!-- <ng-container class="border" *ngIf="failsBasicValidn">Oops no user with username exists :(</ng-container> -->
+                    <!-- <input type="text" #username required maxlength="39" class="form-control form-control-lg" name="username" placeholder="johnpapa" ngModel>  -->
+                </div>
+            </form>
+            <div class="col-md col-lg"></div>
+        </div>
+</div>
+
+<app-repo-data></app-repo-data>
+<!-- Old Repos -->
+<!-- <div class="container d-flex justify-content-center">
+    <div class="row w-100 d-flex flex-wrap justify-content-start"> -->
         <!-- Clone following -->
-        <app-repo-data items></app-repo-data>
-        <div style="width: 300px;" class="col-2 border border-2 border-info rounded-3 d-flex flex-column mx-2 mt-3 mb-3 p-3">
+        <!-- <app-repo-data></app-repo-data> -->
+        <!-- <div style="width: 300px;" class="col-2 border border-2 border-info rounded-3 d-flex flex-column mx-2 mt-3 mb-3 p-3">
             <a href="http://" target="_blank" class="pxy-2 mxy-2" rel="noopener noreferrer">Repo Link</a>
             <p class="border border-2 border-start-0 border-end-0 my-2 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non distinctio vel eos alias sint incidunt ex magni voluptatum enim dolorum.</p>
             <div class="tags d-flex flex-wrap">
@@ -26,7 +68,7 @@
                 <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
                 <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
             </div>
-        </div>
+        </div> -->
         
         <!-- <div style="width: 300px;" class="col-2 border border-2 border-info rounded-3 d-flex flex-column mx-2 mt-3 mb-3 p-3" *ngFor="let repo of repos">
             <a href="http://" target="_blank" class="pxy-2 mxy-2" rel="noopener noreferrer">{{ repo.name }}</a>
@@ -35,5 +77,5 @@
                 <span *ngFor="let lang of repo.languages" class="badge my-2 mx-1 rounded-pill text-bg-info">{{ lang }}</span>
             </div>
         </div> -->
-    </div>
-</div>
+    <!-- </div>
+</div> -->

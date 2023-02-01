@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { FetchReposService } from '../services/fetch-repos.service';
 
-// Properties for pagination
-// let current_page: number = 1;
-// let upper_limit: number = 1, lower_limit: number = 99;
 
 @Component({
 	selector: 'app-profile',
@@ -69,13 +66,18 @@ export class ProfileComponent {
 	}
 	
 	getByPage (page: number) {
-		this.current_page = page;
-		this.getReposByPage(this.username, this.current_page)
-				.then( data => {
-					this.repoData = data;
-					this.showReposContainer = true;
-				})
-				.catch(error => console.log(error.message));
+		if (this.current_page == page){
+			// Do Nothing
+		}
+		else {
+			this.current_page = page;
+			this.getReposByPage(this.username, this.current_page)
+			.then( data => {
+				this.repoData = data;
+				this.showReposContainer = true;
+			})
+			.catch(error => console.log(error.message));
+		}
 	}
 	
 	getPrevPage () {

@@ -1,40 +1,39 @@
-<!-- Old: -->
-<!-- <div class="container">
-    <div class="row p-4 mt-2 mb-1 d-flex justify-content-center">
-        <div class="col-3 d-flex justify-content-center">
-            <img src="" width="150px" height="150px" class="border" alt="">
-        </div>
-        <div class="col-9 d-flex flex-column justify-content-start align-items-start">
-            <h3>John Doe</h3>
-            <p>Bio Goes Here</p>
-            <p>? Location</p>
-            <a href="#" target="_blank">Twitter</a>
-        </div>
-    </div>
-    <a href="#" target="_blank">John's Github Profile</a>
-</div> -->
-
 <!-- Profile Card -->
 <div class="container p-2 mt-2 border border-success rounded">
     <!-- Profile Section -->
     <div class="row pb-3">
+        <!-- Avatar -->
         <div class="col-md-3 d-flex flex-column align-items-center pt-md-2 mt-md-2">
             <img [src]="profileData['avatar_url']" width="150px" height="150px" class="border rounded-circle" alt="">
         </div>
         <div class="col-md-5 d-flex flex-column align-items-center d-md-block pt-2 mt-2 ">
+            <!-- Name & Bio -->
             <h2><strong>{{ profileData['name'] }}</strong></h2>
             <p class="my-auto text-center text-md-start"><i>
                 <ng-container *ngIf="profileData['bio']; then thenBlock else elseBlock"></ng-container>
                 <ng-template #thenBlock>{{ profileData['bio'] }}</ng-template>
                 <ng-template #elseBlock>{{ profileData['name'] }} hasn't set their bio.</ng-template>
             </i></p>
-            <span class="d-block py-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
-                <span class="ms-2 align-middle fs-5"><ng-container *ngIf="profileData['location']; then thenBlock1 else elseBlock1"></ng-container>
-                <ng-template #thenBlock1>{{ profileData['location'] }}</ng-template>
-                <ng-template #elseBlock1>{{ profileData['name'] }} hasn't set their location.</ng-template></span>
+
+            <!-- Location -->
+            <span class="d-block py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
+                <span class="ms-2 align-middle fs-5">
+                    <ng-container *ngIf="profileData['location']; then thenBlock else elseBlock"></ng-container>
+                    <ng-template #thenBlock>{{ profileData['location'] }}</ng-template>
+                    <ng-template #elseBlock>{{ profileData['name'] }} hasn't set their location.</ng-template>
                 </span>
+            </span>
             
-            <a [href]="profileData['twitter_username']" class="" target="_blank">Twitter</a><br>
+            <!-- Twitter -->
+            <span class="ms-2 align-middle fs-5">
+                <ng-container *ngIf="profileData['twitter_username']; then thenBlock else elseBlock"></ng-container>
+                <ng-template #thenBlock>
+                    <a [href]="profileData['twitter_username']" class="" target="_blank">Twitter</a>
+                </ng-template>
+                <ng-template #elseBlock>{{ profileData['name'] }} isn't on Twitter.</ng-template>
+            </span><br>
+            <!-- Github Profile -->
             <a [href]="profileData['html_url']" class="mt-2" target="_blank">Github Profile</a>
         </div>
     </div>
@@ -42,8 +41,6 @@
 
 <!-- Search Another user -->
 <div class="container d-flex align-items-center justify-content-center mt-3">
-    <!-- action="/profile" -->
-        <!-- <form #username="ngForm" (ngSubmit)="submit($event, username)"> -->
         <div class="row w-100">
             <div class="col-md col-lg"></div>
             <!-- <form (submit)="submit(username)" class="col col-lg-9 col-md-10"> -->
@@ -91,29 +88,3 @@
         </div>
     </div>
 </ng-container>
-<!-- Old Repos -->
-<!-- <div class="container d-flex justify-content-center">
-    <div class="row w-100 d-flex flex-wrap justify-content-start"> -->
-        <!-- Clone following -->
-        <!-- <app-repo-data></app-repo-data> -->
-        <!-- <div style="width: 300px;" class="col-2 border border-2 border-info rounded-3 d-flex flex-column mx-2 mt-3 mb-3 p-3">
-            <a href="http://" target="_blank" class="pxy-2 mxy-2" rel="noopener noreferrer">Repo Link</a>
-            <p class="border border-2 border-start-0 border-end-0 my-2 py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non distinctio vel eos alias sint incidunt ex magni voluptatum enim dolorum.</p>
-            <div class="tags d-flex flex-wrap">
-                <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-            </div>
-        </div> -->
-        
-        <!-- <div style="width: 300px;" class="col-2 border border-2 border-info rounded-3 d-flex flex-column mx-2 mt-3 mb-3 p-3" *ngFor="let repo of repos">
-            <a href="http://" target="_blank" class="pxy-2 mxy-2" rel="noopener noreferrer">{{ repo.name }}</a>
-            <p class="border border-2 border-start-0 border-end-0 my-2 py-2">{{ repo.description }}</p>
-            <div class="tags d-flex flex-wrap">
-                <span *ngFor="let lang of repo.languages" class="badge my-2 mx-1 rounded-pill text-bg-info">{{ lang }}</span>
-            </div>
-        </div> -->
-    <!-- </div>
-</div> -->

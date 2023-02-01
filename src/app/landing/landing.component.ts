@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileComponent } from '../profile/profile.component';
 import { FetchReposService } from '../services/fetch-repos.service';
 
 @Component({

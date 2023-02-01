@@ -5,13 +5,14 @@ import { Injectable } from '@angular/core';
 export class FetchReposService {
 	constructor() { }
 	response: any;
+	restAPIURL: string = 'https://test-api-qzn1.onrender.com';
 	
 	getUserRepos = (username: string) => {
-		return fetch(`http://127.0.0.1:8000/profile/?username=${username}`);
+		return fetch(`${this.restAPIURL}/profile/?username=${username}`);
 	}
 
 	getUserReposByPage = (username: string, page: number) => {
-		return fetch(`http://127.0.0.1:8000/profile/?username=${username}&page=${page}`);
+		return fetch(`${this.restAPIURL}/profile/?username=${username}&page=${page}`);
 	}
 
 	setUserData (data: any) {

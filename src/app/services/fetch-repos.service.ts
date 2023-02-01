@@ -20,7 +20,6 @@ export class FetchReposService {
 	}
 
 	getUserData () {
-		console.log(this.response);
 		return this.response;
 	}
 }

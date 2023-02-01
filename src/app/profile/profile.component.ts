@@ -36,7 +36,6 @@ export class ProfileComponent {
 		}
 		this.upper_limit = this.pages.length;
 		this.username = this.profileData['html_url'].split("/").pop();
-		console.log(this.pages);
 	}
 	
 	setUserData () {

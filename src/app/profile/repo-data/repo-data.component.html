@@ -1,46 +1,27 @@
-<!-- <div style="width: 300px;" class="col-2 border border-2 border-info rounded-3 d-flex flex-column mx-2 mt-3 mb-3 p-3" *ngFor="let repo of repos">
-    <a [href]="repo.html_url" target="_blank" class="pxy-2 mxy-2" rel="noopener noreferrer">{{ repo.name }}</a>
-
-    <p class="border border-2 border-start-0 border-end-0 my-2 py-2">{{ repo.description }}</p>
-    <div *ngIf="repo.description; then thenBlock else elseBlock"></div>
-    <ng-template #thenBlock><p class="border border-2 border-start-0 border-end-0 my-2 py-2">{{ repo.description }}</p></ng-template>
-    <ng-template #elseBlock><p class="border border-2 border-start-0 border-end-0 my-2 py-2">No description for repository provided by user.</p></ng-template>
-
-
-    <div class="tags d-flex flex-wrap">
-        <span *ngFor="let lang of repo.languages" class="badge my-2 mx-1 rounded-pill text-bg-info">{{ lang }}</span>
+<div class="col shadow rounded">
+    <div class="card border border-2 my-3 h-100">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <span class="font-monospace fs-5">{{ repo['name'] }}</span>
+            </li>
+            <li class="list-group-item py-3">
+                <span class="fs-4 fw-bold">Description:</span><br>
+                <span class="fs-6 justified">
+                    <ng-container *ngIf="repo['description']; then thenBlock else elseBlock"></ng-container>
+                    <ng-template #thenBlock>{{ repo['description'] }}</ng-template>
+                    <ng-template #elseBlock><span class="text-muted">No description provided.</span></ng-template></span>
+            </li>
+            <a target="_blank" class="text-light text-decoration-none" [href]="repo['html_url']">
+                <li class="list-group-item fs-5 bg-dark text-light">
+                    <i class="bx bxl-github pe-2"></i>View on Github
+                </li>
+            </a>
+            <li class="list-group-item">
+                <span class="fs-4 fw-bold">Languages:</span><br>
+                <div class="tags d-flex flex-wrap">
+                    <span *ngFor="let lang of repo['languages']" class="badge px-3 py-2 my-2 mx-1 rounded-pill text-bg-success">{{ lang }}</span>
+                </div>
+            </li>
+        </ul>
     </div>
-</div> -->
-
-<!-- <div class="container">
-    <div class="row row-cols-sm-2 row-cols-md-3 d-flex flex-column align-items-center flex-sm-row"> -->
-        <div class="col shadow rounded">
-            <div class="card border border-2 my-3 h-100">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <span class="font-monospace fs-5">{{ repo['name'] }}</span>
-                    </li>
-                    <li class="list-group-item py-3">
-                        <span class="fs-4 fw-bold">Description:</span><br>
-                        <span class="fs-6 justified">
-                            <ng-container *ngIf="repo['description']; then thenBlock else elseBlock"></ng-container>
-                            <ng-template #thenBlock>{{ repo['description'] }}</ng-template>
-                            <ng-template #elseBlock><span class="text-muted">No description provided.</span></ng-template></span>
-                    </li>
-                    <a target="_blank" class="text-light text-decoration-none" [href]="repo['html_url']">
-                        <li class="list-group-item fs-5 bg-dark text-light">
-                            <i class="bx bxl-github pe-2"></i>View on Github
-                        </li>
-                    </a>
-                    <li class="list-group-item">
-                        <span class="fs-4 fw-bold">Languages:</span><br>
-                        <div class="tags d-flex flex-wrap">
-                            <span *ngFor="let lang of repo['languages']" class="badge px-3 py-2 my-2 mx-1 rounded-pill text-bg-success">{{ lang }}</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-    <!-- </div>
-</div> -->
+</div>

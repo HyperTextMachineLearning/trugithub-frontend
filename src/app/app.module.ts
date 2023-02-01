@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RepoDataComponent } from './profile/repo-data/repo-data.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LandingComponent,
 		ProfileComponent,
-		RepoDataComponent
+		RepoDataComponent,
+  SearchComponent
 	],
 	imports: [
 		BrowserModule,

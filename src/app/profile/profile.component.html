@@ -19,14 +19,23 @@
     <!-- Profile Section -->
     <div class="row pb-3">
         <div class="col-md-3 d-flex flex-column align-items-center pt-md-2 mt-md-2">
-            <img src="" width="150px" height="150px" class="border rounded-circle" alt="">
+            <img [src]="profileData['avatar_url']" width="150px" height="150px" class="border rounded-circle" alt="">
         </div>
         <div class="col-md-5 d-flex flex-column align-items-center d-md-block pt-2 mt-2 ">
-            <h2><strong>John Doe</strong></h2>
-            <p><i>Bio Goes Here</i></p>
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg> Location</p>
-            <a href="#" class="" target="_blank">Twitter</a><br>
-            <a href="#" class="mt-2" target="_blank">John's Github Profile</a>
+            <h2><strong>{{ profileData['name'] }}</strong></h2>
+            <p class="my-auto text-center text-md-start"><i>
+                <ng-container *ngIf="profileData['bio']; then thenBlock else elseBlock"></ng-container>
+                <ng-template #thenBlock>{{ profileData['bio'] }}</ng-template>
+                <ng-template #elseBlock>{{ profileData['name'] }} hasn't set their bio.</ng-template>
+            </i></p>
+            <span class="d-block py-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
+                <span class="ms-2 align-middle fs-5"><ng-container *ngIf="profileData['location']; then thenBlock1 else elseBlock1"></ng-container>
+                <ng-template #thenBlock1>{{ profileData['location'] }}</ng-template>
+                <ng-template #elseBlock1>{{ profileData['name'] }} hasn't set their location.</ng-template></span>
+                </span>
+            
+            <a [href]="profileData['twitter_username']" class="" target="_blank">Twitter</a><br>
+            <a [href]="profileData['html_url']" class="mt-2" target="_blank">Github Profile</a>
         </div>
     </div>
 </div>
@@ -52,7 +61,36 @@
         </div>
 </div>
 
-<app-repo-data></app-repo-data>
+<div class="container d-flex align-items-center justify-content-center my-3">
+    <ng-container *ngIf="showLoadingIcon">
+        <div class="d-flex justify-content-center align-items-center">
+            <img width="40px" src="../../assets/tail-spin.svg" alt="">
+            <span class="ms-3 fs-5">Fetching Repositories</span>
+        </div>
+    </ng-container>
+</div>
+
+<div class="container" *ngIf="showReposContainer">
+    <div class="row row-cols-sm-2 row-cols-md-3 d-flex flex-column align-items-sm-stretch flex-sm-row">
+        <ng-container *ngFor="let repo of repoData">
+            <app-repo-data [repo]="repo"></app-repo-data>
+        </ng-container>
+    </div>
+</div>
+<ng-container *ngIf="pages.length > 1">
+    <div class="container d-flex justify-content-center flex-wrap">
+        <div class="row row-cols-sm-6 row-cols-md-12 row-cols-lg-18 d-flex flex-wrap">
+            <button (click)="getPrevPage()" style="min-width: fit-content;" type="button" class="btn m-1 p-2 btn-outline-primary">Previous</button>
+
+            <!-- Clone Following -->
+            <div *ngFor="let page of pages; let page_no = index" (click)="getByPage(page_no + 1)" style="max-width: fit-content;" [ngClass]="page_no + 1 == current_page ? {active: 'active'} : {asctive: 'sfalse'}" class="col d-flex justify-content-center align-items-center btn btn-outline-primary rounded m-1">
+                <span class="w-auto fs-5">{{ page_no + 1 }}</span>
+            </div>
+            
+            <button (click)="getNextPage()" style="min-width: fit-content;" type="button" class="btn m-1 p-2 btn-outline-primary">Next</button>
+        </div>
+    </div>
+</ng-container>
 <!-- Old Repos -->
 <!-- <div class="container d-flex justify-content-center">
     <div class="row w-100 d-flex flex-wrap justify-content-start"> -->

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileComponent } from '../profile/profile.component';
 import { FetchReposService } from '../services/fetch-repos.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { FetchReposService } from '../services/fetch-repos.service';
 })
 export class LandingComponent {
 
-	constructor(private repoService: FetchReposService, private router: Router){};
+	constructor(
+		private repoService: FetchReposService, 
+		private router: Router,
+		){};
 	username: string = '';
 
 	// This flag checks whether username abides by Github's rules for username
@@ -26,7 +30,15 @@ export class LandingComponent {
 		
 		this.username = usernameField.value;
 		this.process_username(usernameField)
-			.then(data => console.log(data))
+			.then(data => {
+				if (data == 'not found' || data == 'invalid') {
+
+				}
+				else {
+					this.repoService.setUserData(data);
+					this.router.navigate(['/profile'])
+				}
+			})
 			.catch(error => console.log(error.message));
 		
  	}
@@ -40,18 +52,18 @@ export class LandingComponent {
 			if(this.userData.message){
 				this.showLoadingIcon = false;
 				this.showUserNotFoundIcon = true;
-				return;
+				return 'not found';
 			}
 			else{
 				this.showLoadingIcon = false;
 				return this.userData;
 			}
-			// this.router.navigate(['/profile'])
 		}
 		else{
 			this.showUserNotFoundIcon = false;
 			this.failsBasicValidn = true;
 			usernameField.value = '';
+			return 'invalid';
 		}
 	}
 }

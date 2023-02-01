@@ -12,19 +12,22 @@
     </div>
 </div> -->
 
-<div class="container">
-    <div class="row row-cols-sm-2 row-cols-md-3 d-flex flex-column align-items-center flex-sm-row">
-        <div class="col">
-            <div class="card my-3">
+<!-- <div class="container">
+    <div class="row row-cols-sm-2 row-cols-md-3 d-flex flex-column align-items-center flex-sm-row"> -->
+        <div class="col shadow rounded">
+            <div class="card border border-2 my-3 h-100">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <span class="font-monospace fs-4">repo-name</span>
+                        <span class="font-monospace fs-4">{{ repo['name'] }}</span>
                     </li>
                     <li class="list-group-item py-3">
                         <span class="fs-4 fw-bold">Description:</span><br>
-                        <span class="fs-6 justified">Lorem ipsum dolor sit amet consectetur adipisicing elit. A excepturi accusantium commodi sed nulla iusto!</span>
+                        <span class="fs-6 justified">
+                            <ng-container *ngIf="repo['description']; then thenBlock else elseBlock"></ng-container>
+                            <ng-template #thenBlock>{{ repo['description'] }}</ng-template>
+                            <ng-template #elseBlock><span class="text-muted">No description provided.</span></ng-template></span>
                     </li>
-                    <a class="text-light text-decoration-none" href="">
+                    <a target="_blank" class="text-light text-decoration-none" [href]="repo['html_url']">
                         <li class="list-group-item fs-5 bg-dark text-light">
                             <i class="bx bxl-github pe-2"></i>View on Github
                         </li>
@@ -32,16 +35,12 @@
                     <li class="list-group-item">
                         <span class="fs-4 fw-bold">Languages:</span><br>
                         <div class="tags d-flex flex-wrap">
-                            <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                            <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                            <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                            <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
-                            <span class="badge my-2 mx-1 rounded-pill text-bg-info">HTML</span>
+                            <span *ngFor="let lang of repo['languages']" class="badge my-2 mx-1 rounded-pill text-bg-info">{{ lang }}</span>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
         
-    </div>
-</div>
+    <!-- </div>
+</div> -->

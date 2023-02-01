@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./repo-data.component.css']
 })
 export class RepoDataComponent {
+  @Input() repo: any;
+  constructor () {}
 
 }

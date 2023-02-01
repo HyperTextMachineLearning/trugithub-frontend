@@ -1,10 +1,10 @@
 <!-- Profile Card -->
-<div class="container p-2 mt-2 mb-3 border border-success rounded">
+<div class="container p-2 mt-2 mb-3 shadow rounded">
     <!-- Profile Section -->
     <div class="row pb-3">
         <!-- Avatar -->
-        <div class="col-md-3 d-flex flex-column align-items-center pt-md-2 mt-md-2">
-            <img [src]="profileData['avatar_url']" width="150px" height="150px" class="border rounded-circle" alt="">
+        <div class="col-md-3 d-flex flex-column align-items-center justify-content-center py-2 mt-md-2">
+            <img [src]="profileData['avatar_url']" width="150px" height="150px" class="border border-dark p-1 rounded-circle" alt="">
         </div>
         <div class="col-md-5 d-flex flex-column align-items-center d-md-block pt-2 mt-2 ">
             <!-- Name & Bio -->
@@ -16,9 +16,9 @@
             </i></p>
 
             <!-- Location -->
-            <span class="d-block py-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
-                <span class="ms-2 align-middle fs-5">
+            <span class="d-block text-center text-md-start py-2">
+                <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
+                <span class="ms-2 fs-5">
                     <ng-container *ngIf="profileData['location']; then thenBlock1 else elseBlock1"></ng-container>
                     <ng-template #thenBlock1>{{ profileData['location'] }}</ng-template>
                     <ng-template #elseBlock1>{{ profileData['name'] }} hasn't set their location.</ng-template>
@@ -29,35 +29,17 @@
             <span class="align-middle">
                 <ng-container *ngIf="profileData['twitter_username']; then thenBlock2 else elseBlock2"></ng-container>
                 <ng-template #thenBlock2>
-                    <a [href]="profileData['twitter_username']" class="" target="_blank">Twitter</a>
+                    <a [href]="profileData['twitter_username']" class="btn btn-info text-white" target="_blank">Twitter</a>
                 </ng-template>
                 <ng-template #elseBlock2>{{ profileData['name'] }} isn't on Twitter.</ng-template>
             </span><br>
             <!-- Github Profile -->
-            <a [href]="profileData['html_url']" class="mt-2" target="_blank">Github Profile</a>
+            <a [href]="profileData['html_url']" class="mt-2 btn btn-dark" target="_blank">Github Profile</a>
         </div>
     </div>
 </div>
 
 <app-search [onHome]="false"></app-search>
-<!-- Search Another user -->
-<!-- <div class="container d-flex align-items-center justify-content-center mt-3">
-        <div class="row w-100">
-            <div class="col-md col-lg"></div> -->
-            <!-- <form (submit)="submit(username)" class="col col-lg-9 col-md-10"> -->
-            <!-- <form class="col col-lg-9 col-md-10">
-                <div class="form d-flex flex-column justify-content-center">
-                    <div class="input-group mb-1">
-                        <input type="text" required maxlength="39" class="form-control form-control-lg" name="username" placeholder="Search another user" aria-label="Recipient's username" aria-describedby="button-addon2" ngModel>
-                        <button class="btn btn-outline-dark" type="submit" id="button-addon2">Go</button>
-                    </div>                       -->
-                    <!-- <ng-container class="border" *ngIf="failsBasicValidn">Oops no user with username exists :(</ng-container> -->
-                    <!-- <input type="text" #username required maxlength="39" class="form-control form-control-lg" name="username" placeholder="johnpapa" ngModel>  -->
-                <!-- </div>
-            </form>
-            <div class="col-md col-lg"></div>
-        </div>
-</div> -->
 
 <!-- Loading Icon -->
 <div class="container d-flex align-items-center justify-content-center my-3">
@@ -77,8 +59,8 @@
     </div>
 </div>
 <ng-container *ngIf="pages.length > 1">
-    <div class="container d-flex justify-content-center flex-wrap">
-        <div class="row row-cols-sm-6 row-cols-md-12 row-cols-lg-18 d-flex flex-wrap">
+    <div class="container mb-2 d-flex justify-content-center flex-wrap">
+        <div style="max-width: 99%;" class="row row-cols-sm-6 row-cols-md-12 row-cols-lg-18 d-flex flex-wrap">
             <button (click)="getPrevPage()" style="min-width: fit-content;" type="button" class="btn m-1 p-2 btn-outline-primary">Previous</button>
 
             <!-- Clone Following -->

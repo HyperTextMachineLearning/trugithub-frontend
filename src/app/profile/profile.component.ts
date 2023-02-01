@@ -26,7 +26,9 @@ export class ProfileComponent {
 		) {
 		this.setUserData();
 		this.profileData = this.userData['user_details'];
-		this.profileData['twitter_username'] = 'https://twitter.com/' + this.profileData['twitter_username'];
+		if (this.profileData['twitter_username']) {
+			this.profileData['twitter_username'] = 'https://twitter.com/' + this.profileData['twitter_username'];
+		}
 		this.repoData = this.userData['repo_details']
 		this.pages = [];
 		for(let i = 1; i <= Math.ceil(this.profileData.public_repos / 9); i++){

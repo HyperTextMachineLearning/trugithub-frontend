@@ -57,6 +57,9 @@ export class SearchComponent {
 			if(this.userData.message){
 				this.showLoadingIcon = false;
 				this.showUserNotFoundIcon = true;
+				setTimeout(() => {
+					this.showUserNotFoundIcon = false;
+				}, 2500);
 				return 'not found';
 			}
 			else{
@@ -70,7 +73,7 @@ export class SearchComponent {
 			usernameField.value = '';
 			setTimeout(() => {
 				this.failsBasicValidn = false;
-			}, 1500);
+			}, 2500);
 			return 'invalid';
 		}
 	}

@@ -19,19 +19,19 @@
             <span class="d-block py-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path></svg>
                 <span class="ms-2 align-middle fs-5">
-                    <ng-container *ngIf="profileData['location']; then thenBlock else elseBlock"></ng-container>
-                    <ng-template #thenBlock>{{ profileData['location'] }}</ng-template>
-                    <ng-template #elseBlock>{{ profileData['name'] }} hasn't set their location.</ng-template>
+                    <ng-container *ngIf="profileData['location']; then thenBlock1 else elseBlock1"></ng-container>
+                    <ng-template #thenBlock1>{{ profileData['location'] }}</ng-template>
+                    <ng-template #elseBlock1>{{ profileData['name'] }} hasn't set their location.</ng-template>
                 </span>
             </span>
             
             <!-- Twitter -->
-            <span class="ms-2 align-middle fs-5">
-                <ng-container *ngIf="profileData['twitter_username']; then thenBlock else elseBlock"></ng-container>
-                <ng-template #thenBlock>
+            <span class="align-middle">
+                <ng-container *ngIf="profileData['twitter_username']; then thenBlock2 else elseBlock2"></ng-container>
+                <ng-template #thenBlock2>
                     <a [href]="profileData['twitter_username']" class="" target="_blank">Twitter</a>
                 </ng-template>
-                <ng-template #elseBlock>{{ profileData['name'] }} isn't on Twitter.</ng-template>
+                <ng-template #elseBlock2>{{ profileData['name'] }} isn't on Twitter.</ng-template>
             </span><br>
             <!-- Github Profile -->
             <a [href]="profileData['html_url']" class="mt-2" target="_blank">Github Profile</a>
@@ -58,10 +58,11 @@
         </div>
 </div>
 
+<!-- Loading Icon -->
 <div class="container d-flex align-items-center justify-content-center my-3">
     <ng-container *ngIf="showLoadingIcon">
         <div class="d-flex justify-content-center align-items-center">
-            <img width="40px" src="../../assets/tail-spin.svg" alt="">
+            <img width="25px" src="../../assets/tail-spin.svg" alt="">
             <span class="ms-3 fs-5">Fetching Repositories</span>
         </div>
     </ng-container>

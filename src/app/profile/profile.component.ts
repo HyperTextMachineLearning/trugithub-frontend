@@ -21,7 +21,9 @@ export class ProfileComponent {
 	showReposContainer: boolean = true;
 	username: string;
 	
-	constructor (private repoService: FetchReposService) {
+	constructor (
+		private repoService: FetchReposService,
+		) {
 		this.setUserData();
 		this.profileData = this.userData['user_details'];
 		this.profileData['twitter_username'] = 'https://twitter.com/' + this.profileData['twitter_username'];

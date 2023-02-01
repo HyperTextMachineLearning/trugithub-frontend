@@ -1,5 +1,5 @@
 <!-- Profile Card -->
-<div class="container p-2 mt-2 border border-success rounded">
+<div class="container p-2 mt-2 mb-3 border border-success rounded">
     <!-- Profile Section -->
     <div class="row pb-3">
         <!-- Avatar -->
@@ -39,24 +39,25 @@
     </div>
 </div>
 
+<app-search [onHome]="false"></app-search>
 <!-- Search Another user -->
-<div class="container d-flex align-items-center justify-content-center mt-3">
+<!-- <div class="container d-flex align-items-center justify-content-center mt-3">
         <div class="row w-100">
-            <div class="col-md col-lg"></div>
+            <div class="col-md col-lg"></div> -->
             <!-- <form (submit)="submit(username)" class="col col-lg-9 col-md-10"> -->
-            <form class="col col-lg-9 col-md-10">
+            <!-- <form class="col col-lg-9 col-md-10">
                 <div class="form d-flex flex-column justify-content-center">
                     <div class="input-group mb-1">
                         <input type="text" required maxlength="39" class="form-control form-control-lg" name="username" placeholder="Search another user" aria-label="Recipient's username" aria-describedby="button-addon2" ngModel>
                         <button class="btn btn-outline-dark" type="submit" id="button-addon2">Go</button>
-                    </div>                      
+                    </div>                       -->
                     <!-- <ng-container class="border" *ngIf="failsBasicValidn">Oops no user with username exists :(</ng-container> -->
                     <!-- <input type="text" #username required maxlength="39" class="form-control form-control-lg" name="username" placeholder="johnpapa" ngModel>  -->
-                </div>
+                <!-- </div>
             </form>
             <div class="col-md col-lg"></div>
         </div>
-</div>
+</div> -->
 
 <!-- Loading Icon -->
 <div class="container d-flex align-items-center justify-content-center my-3">

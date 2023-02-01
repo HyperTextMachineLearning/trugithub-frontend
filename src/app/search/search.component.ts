@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FetchReposService } from '../services/fetch-repos.service';
 
@@ -13,7 +13,7 @@ export class SearchComponent {
 		private router: Router,
 		){};
 	username: string = '';
-
+	@Input() onHome: boolean = true;
 	// This flag checks whether username abides by Github's rules for username
 	failsBasicValidn: boolean = false;
 	// Following is the regex for above
@@ -34,7 +34,14 @@ export class SearchComponent {
 				}
 				else {
 					this.repoService.setUserData(data);
-					this.router.navigate(['/profile'])
+					if (this.onHome) {
+						this.router.navigate(['/profile']);
+					}
+					else {
+						this.router.navigateByUrl('/', {skipLocationChange: true})
+						.then(() => {this.router.navigateByUrl('/profile')});
+					}
+					// this.router.navigateByUrl('/profile');
 				}
 			})
 			.catch(error => console.log(error.message));
@@ -61,6 +68,9 @@ export class SearchComponent {
 			this.showUserNotFoundIcon = false;
 			this.failsBasicValidn = true;
 			usernameField.value = '';
+			setTimeout(() => {
+				this.failsBasicValidn = false;
+			}, 1500);
 			return 'invalid';
 		}
 	}

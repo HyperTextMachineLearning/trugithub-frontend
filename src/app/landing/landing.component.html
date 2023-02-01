@@ -3,10 +3,11 @@
         <h1 class="text-center pb-2 mb-2">Fetch GitHub repositories using username!</h1>
         <!-- <form #username="ngForm" (ngSubmit)="submit($event, username)"> -->
 
-        <div class="col-lg-2"></div>
+        <app-search [onHome]="true"></app-search>
+        <!-- <label for="username" class="form-label">Username</label> -->
+        <!-- <div class="col-lg-2"></div>
         <div class="form w-100 col d-flex flex-column justify-content-center">
             <form (submit)="submit(username)">
-                <!-- <label for="username" class="form-label">Username</label> -->
                 <div class="input-group mb-3">
                     <input type="text" #username required maxlength="39" class="form-control form-control-lg" name="username" placeholder="johnpapa" aria-label="Recipient's username" aria-describedby="button-addon2" ngModel>
                     <button class="btn btn-outline-dark" type="submit" id="button-addon2">Go</button>
@@ -23,7 +24,7 @@
                 <ng-container *ngIf="failsBasicValidn">Oops no user with username exists :(</ng-container>    
             </form>
         </div>
-        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div> -->
         
     </div>
 </div>
